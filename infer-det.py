@@ -31,8 +31,8 @@ def main(args: argparse.Namespace) -> None:
         bgr, ratio, dwdh = letterbox(bgr, (W, H))
         rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
         tensor = blob(rgb, return_seg=False)
-        dwdh = torch.asarray(dwdh * 2, dtype=torch.float32, device=device)
-        tensor = torch.asarray(tensor, device=device)
+        dwdh = torch.tensor(dwdh * 2, dtype=torch.float32, device=device)
+        tensor = torch.tensor(tensor, device=device)
         # inference
         data = Engine(tensor)
 

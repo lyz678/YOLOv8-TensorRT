@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Debug Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}", // 当前打开的文件
+            "console": "integratedTerminal",
+            // "args": ["--config", "configs/lego.txt", "--render_only"], // 可选的命令行参数
+            // "args": ["--image_size", "1920*1080", "--mode", "calibrate", "--corner", "8*6", "--square", "20"], // 可选的命令行参数
+            "args": ["--engine", "yolov8s.engine", "--imgs", "data", "--show", "--out-dir", "outputs", "--device", "cuda:0"], // 可选的命令行参数
+            "cwd": "${fileDirname}", // 将工作目录设置为当前文件所在目录
+            "env": {
+                "MY_ENV_VAR": "my_value" // 可选的环境变量
+            },
+            "envFile": "${workspaceFolder}/.env", // 可选的环境变量文件
+            "justMyCode": false,
+            "stopOnEntry": false,
+            "showReturnValue": true,
+   
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
