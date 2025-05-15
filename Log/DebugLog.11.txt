@@ -1,2 +1,0 @@
-Logging started for program DebugLog on host qcs6490-odk at Sun Apr 27 2025 10:27:01.201870 (this log file is /home/fibo/Desktop/yolov8/Log/DebugLog.11.txt)
-Logging stopped at Sun Apr 27 2025 10:27:40.412703
