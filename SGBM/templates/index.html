@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stereo Disparity Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .video-box {
+            text-align: center;
+        }
+        img {
+            width: 640px;
+            height: 480px;
+            border: 1px solid #000;
+        }
+        #coords {
+            margin-top: 10px;
+            white-space: pre-wrap;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        #timing {
+            margin-top: 10px;
+            white-space: pre-wrap;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="video-box">
+            <h3>Left Image</h3>
+            <img src="{{ url_for('video_feed_left') }}" alt="Left Image">
+        </div>
+        <div class="video-box">
+            <h3>Grayscale Disparity</h3>
+            <img src="{{ url_for('video_feed_disp') }}" alt="Grayscale Disparity">
+        </div>
+        <div class="video-box">
+            <h3>Depth Map</h3>
+            <img id="depth" src="{{ url_for('video_feed_depth') }}" alt="Depth Map">
+        </div>
+        <div>
+            <h3>Coordinates</h3>
+            <div id="coords">Click on the Depth Map to get coordinates</div>
+            <h3>Timing</h3>
+            <div id="timing">Waiting for timing data...</div>
+        </div>
+    </div>
+    <script>
+        const depthImg = document.getElementById('depth');
+        const coordsDiv = document.getElementById('coords');
+        const timingDiv = document.getElementById('timing');
+
+        depthImg.addEventListener('click', async (event) => {
+            const rect = depthImg.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            try {
+                const response = await fetch('/get_coordinates', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ x, y })
+                });
+                const data = await response.json();
+                if (data.error) {
+                    coordsDiv.textContent = data.error;
+                } else {
+                    coordsDiv.textContent = `像素坐标 x = ${data.x}, y = ${data.y}\n` +
+                                            `世界坐标xyz 是：${data.world_x.toFixed(3)}, ${data.world_y.toFixed(3)}, ${data.world_z.toFixed(3)} m\n` +
+                                            `距离是：${data.distance.toFixed(3)} m`;
+                }
+            } catch (error) {
+                coordsDiv.textContent = 'Error fetching coordinates';
+            }
+        });
+
+        // Periodically update timing
+        async function updateTiming() {
+            try {
+                const response = await fetch('/get_timing');
+                const data = await response.json();
+                timingDiv.textContent = data.timing || 'No timing data';
+            } catch (error) {
+                timingDiv.textContent = 'Error fetching timing';
+            }
+            setTimeout(updateTiming, 1000);
+        }
+        updateTiming();
+    </script>
+</body>
+</html>

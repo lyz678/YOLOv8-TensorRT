@@ -1,0 +1,6 @@
+int32 servo_id      # 舵机ID (1:左右旋转, 2:前后伸缩, 3:上下高度)
+int32 target_pos    # 目标位置
+int32 speed         # 移动速度(度/秒)
+---
+bool success        # 执行是否成功
+string message      # 返回消息

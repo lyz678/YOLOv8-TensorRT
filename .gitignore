@@ -10,6 +10,7 @@
 *.png
 *.bmp
 *.plan
+*.avi
 .clang-format
 
 # Byte-compiled / optimized / DLL files
@@ -146,7 +147,3 @@ dmypy.json
 run_track_person_ros_node.py
 run_track_person_ros.py
 run_track_person_ros_server.py
-sort/
-SGBM/
-run_camera_depth.py
-JetMax
