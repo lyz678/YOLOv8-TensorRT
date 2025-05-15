@@ -141,3 +141,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+run_track_person_ros_node.py
+run_track_person_ros.py
+run_track_person_ros_server.py
+sort/
+SGBM/
+run_camera_depth.py
+JetMax
