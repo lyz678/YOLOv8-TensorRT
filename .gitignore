@@ -1,6 +1,7 @@
 # Personal
 .idea
 *.engine
+*.trt
 *.pt
 *.pth
 *.onnx
@@ -9,6 +10,9 @@
 *.png
 *.bmp
 *.plan
+*.avi
+*.dlc
+
 .clang-format
 
 # Byte-compiled / optimized / DLL files
@@ -141,3 +145,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
