@@ -1,6 +1,7 @@
 # Personal
 .idea
 *.engine
+*.trt
 *.pt
 *.pth
 *.onnx
