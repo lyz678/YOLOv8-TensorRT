@@ -17,7 +17,7 @@ app = Flask(__name__)
 CORS(app)
 
 # API Key
-api_key = os.getenv('DASHSCOPE_API_KEY') or 'sk-66afd766ea1747af886d830245dca36c'
+api_key = os.getenv('DASHSCOPE_API_KEY')
 if not api_key:
     logger.error("API Key 未提供")
     dashscope.api_key = "your-api-key-here"
