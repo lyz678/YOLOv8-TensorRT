@@ -1,0 +1,9 @@
+2025-05-29 08:00:00, Bird, Forest Area, images/Bird_1.jpg  
+2025-05-29 09:15:00, Cat, Residential Area, images/Cat_1.jpg  
+2025-05-29 10:30:00, Cow, Farmland, images/Cow_1.jpg  
+2025-05-29 11:45:00, Dog, Park, images/Dog_1.jpg  
+2025-05-29 12:00:00, Dog, Lakeside, images/Dog_2.jpeg  
+2025-05-30 13:20:00, Giraffe, Savannah, images/Giraffe_1.jpg  
+2025-05-30 14:30:00, Horse, Ranch, images/Horse_1.png  
+2025-05-30 15:10:00, Leopard, Jungle, images/Leopard_1.jpeg  
+2025-05-30 16:25:00, Rhinoceros, Grassland, images/Rhinoceros_1.jpeg  
